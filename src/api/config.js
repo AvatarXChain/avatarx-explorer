@@ -1,6 +1,5 @@
 import axios from 'axios';
 import router from 'umi/router';
-import { checkAuth, signOut } from '../services/auth';
 
 // axios 配置
 axios.defaults.timeout = 10000;
@@ -10,10 +9,6 @@ axios.defaults.baseURL = '/api/'
 axios.interceptors.request.use(
   config => {
     // 需要同步获取到accessToken，添加至header中
-    const accessToken = checkAuth();
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
     return config;
   },
   err => {
@@ -31,7 +26,6 @@ axios.interceptors.response.use(
       switch (error.response.status) {
         case 401:
           // 401 清除token信息并跳转到登录页面
-          signOut();
           // store.commit(types.SET_AUTH_SIGNOUT);
           // router.replace({
           //   path: 'login',
