@@ -119,6 +119,7 @@ class Footer extends React.Component {
 
     return (<OverPack
       {...props}
+      component="footer"
       playScale={isMobile ? 0.5 : 0.2}
     >
       <QueueAnim type="bottom" component="ul" key="ul" leaveReverse id={`${props.id}-ul`}>

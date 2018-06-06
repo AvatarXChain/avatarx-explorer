@@ -41,7 +41,7 @@ export const dateFormat = date => {
 }
 
 export const limitedStr = (str, len) => {
-  const reg = /[^\x00-\xff]/g
+  const reg = '/[^\x00-\xff]/g'
   if (str.replace(reg, 'mm').length <= len) {
     return str
   }

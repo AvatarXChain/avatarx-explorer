@@ -1,32 +1,33 @@
-
-import * as indexService from '../services/index';
+import pathToRegexp from 'path-to-regexp';
+import * as blocksService from '../services/index';
 
 export default {
   namespace: 'blocks',
   state: {
     blockList: null,
-    transactionList: null,
+    blockItem: null,
   },
   reducers: {
     saveBlockList(state, { payload: blockList }) {
       return { ...state, blockList };
     },
-    saveTransactionList(state, { payload: transactionList }) {
-      return { ...state, transactionList };
+    saveBlockItem(state, { payload: blockItem }) {
+      return { ...state, blockItem };
     },
   },
   effects: {
     *fetchBlockList({ payload: params }, { call, put }) {
-      const result = yield call(indexService.fetchBlockList, params);
+      const result = yield call(blocksService.fetchBlockList, params);
       yield put({
         type: 'saveBlockList',
         payload: result
       })
     },
-    *fetchTransactionList({ payload: params }, { call, put }) {
-      const result = yield call(indexService.fetchTransactionList, params);
+    *fetchBlockItem({ payload: params }, { call, put }) {
+      console.log(params)
+      const result = yield call(blocksService.fetchBlockItem, params);
       yield put({
-        type: 'saveTransactionList',
+        type: 'saveBlockItem',
         payload: result
       })
     },
@@ -57,6 +58,20 @@ export default {
         if (pathname === '/') {
           // fetchBlockList();
           // fetchTransactionList();
+        }
+      });
+    },
+    itemSubscriber({ dispatch, history }) {
+      return history.listen(({ pathname }) => {
+        const match = pathToRegexp('/blocks/:itemId').exec(pathname);
+        if (match) {
+          const itemId = match[1];
+          dispatch({
+            type: 'fetchBlockItem',
+            payload: {
+              id: itemId
+            },
+          });
         }
       });
     },

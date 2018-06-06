@@ -1,0 +1,48 @@
+
+@import "../../../assets/less/custom.less";
+
+.content-block {
+
+  > .header,
+  > .detail {
+    padding: 20px 50px;
+    border-radius: 5px;
+  }
+
+  > .header {
+    background-color: @primary-color;
+    color: #fff;
+
+    > p {
+      color: lighten(@title-color, 40%);
+    }
+
+    > h3 {
+      padding-top: 10px;
+      color: #fff;
+    }
+  }
+
+  > .detail {
+    margin-top: 20px;
+    background-color: #fff;
+
+
+    > li {
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 1px solid @line-color;
+
+      > span {
+
+        &:first-child {
+          float: left;
+        }
+
+        &:last-child {
+          float: right;
+        }
+      }
+    }
+  }
+}

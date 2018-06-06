@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { enquireScreen } from 'enquire-js';
 
-import '../assets/less/base.less';
+import '../assets/less/main.less';
 
 let isMobile;
 enquireScreen((b) => {
