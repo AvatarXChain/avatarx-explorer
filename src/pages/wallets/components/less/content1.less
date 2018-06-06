@@ -1,0 +1,155 @@
+@import './custom.less';
+
+@content1: content1;
+.@{content1} {
+
+  &-wrapper {
+    padding-top: 5%;
+    // height: calc(~"100vh - 64px");
+    background-color: @template-bg-color;
+    background-image: url(../../../../assets/images/network.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 1150px auto;
+  }
+
+  > h1 {
+    color: #fff;
+  }
+
+  > p {
+    margin: 0 auto !important;
+    padding: 0 10%;
+    max-width: 1000px;
+    color: #fff;
+    line-height: 1.8;
+  }
+
+  > .about-info {
+    height: 40%;
+  }
+
+  &-contentWrapper {
+    position: relative;
+    top: 10%;
+    height: 60%;
+
+    ul {
+
+      > li {
+        display: inline-block;
+        margin-bottom: 30px;
+        width: 25%;
+        vertical-align: top;
+        text-align: center;
+
+        > a {
+          display: block;
+
+          > .icon {
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            vertical-align: top;
+            border: 1px solid #fff;
+            border-radius: 50%;
+
+            > i {
+              font-size: 50px;
+              color: #fff;
+            }
+          }
+
+          > .text {
+            margin-top: 5px;
+            font-weight: 200;
+            vertical-align: top;
+
+            > h1 {
+              font-size: 24px;
+              font-weight: 200;
+              color: #fff;
+            }
+
+            > p {
+              padding: 5px 20%;
+              font-size: 14px;
+              color: fade(#fff, 50%);
+            }
+          }
+
+          &:hover {
+
+            > .icon {
+              // border-color: @primary-color;
+              background-color: @primary-color;
+              border-color: @primary-color;
+
+              > i {
+                // color: @primary-color;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .@{content1} {
+    overflow: hidden;
+    margin: auto;
+    padding-top: 5%;
+
+    &-wrapper {
+      background-color: @template-bg-color;
+      background-image: none;
+    }
+
+    > h1, > p {
+      position: relative;
+      top: auto;
+    }
+
+    > .about-info {
+      display: none;
+      height: 0;
+    }
+
+    &-contentWrapper {
+      top: auto;
+      margin: 0 auto;
+      margin-top: 40px;
+      height: auto;
+
+      ul {
+        margin-top: 10%;
+
+        > li {
+          display: inline-block;
+          position: relative;
+          width: 50%;
+          margin: auto;
+          margin-bottom: 40px;
+
+          > a {
+
+            > .text {
+
+              > p {
+                font-size: 12px;
+              }
+            }
+          }
+
+          &.queue-anim-leaving {
+            position: relative !important;
+          }
+        }
+      }
+    }
+  }
+}

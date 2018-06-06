@@ -1,0 +1,133 @@
+@import './custom.less';
+
+@footer: footer0;
+
+.@{footer} {
+  background: @template-bg-color;
+  height: 380px;
+  overflow: hidden;
+  position: relative;
+  color: @template-footer-text-color;
+
+  & > ul {
+    width: 95%;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    overflow: inherit;
+
+    & > li {
+      float: left;
+      width: 20%;
+      padding: 10px;
+      position: relative !important; // 强制去除 queue-anim-leaving 的 absolute;
+
+      & h2 {
+        font-weight: normal;
+        color: @template-text-color;
+        margin-bottom: 0px;
+      }
+
+      & .img {
+        width: 110px;
+        display: inline-block;
+        margin-left: 40px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      & a {
+        display: block;
+        padding: 5px 0;
+        color: #666;
+
+        &:hover {
+          color: @template-text-color;
+        }
+      }
+
+      & .logo {
+        width: 80%;
+        max-width: 150px;
+        height: 40px;
+        display: block;
+        background-image: url(../images/logo.png);
+        background-size: auto 34px;
+        background-repeat: no-repeat;
+      }
+
+      &.product {
+        width: 15%;
+      }
+
+      &.contact {
+        width: 25%;
+      }
+
+      &.social {
+        width: 15%;
+      }
+    }
+  }
+
+  & .copyright {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    border-top: 1px solid fade(@line-color, 10);
+    span{
+      display: block;
+      margin: 20px auto 0;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .@{footer} {
+    height: 940px;
+
+    > ul {
+      width: 90%;
+      margin: 0 auto;
+      padding: 10px 0;
+
+      > li {
+        width: 100%;
+        border-bottom: 1px solid fade(#fff, 5%);
+
+        h2 {
+          margin-bottom: 10px;
+        }
+
+        li {
+          display: block;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &.product {
+          width: 100%;
+        }
+
+        &.contact {
+          width: 100%;
+        }
+
+        &.social {
+          width: 100%;
+        }
+      }
+    }
+
+    .copyright {
+      span {
+        width: 90%;
+      }
+    }
+  }
+}

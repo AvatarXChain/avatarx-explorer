@@ -1,0 +1,122 @@
+@import './custom.less';
+
+@content2: content2;
+.@{content2} {
+  &-wrapper {
+    padding-top: 5%;
+    background-color: #f2f2f2;
+  }
+
+  > h1 {
+    color: #333;
+  }
+
+  > p {
+    margin: 0 !important;
+    padding: 0 10%;
+    line-height: 1.8;
+  }
+
+  &-contentWrapper {
+    position: relative;
+    top: 10%;
+
+    ul {
+
+      > li {
+        display: inline-block;
+        margin-bottom: 60px;
+        width: 33.33%;
+        vertical-align: top;
+        text-align: center;
+
+        > .icon {
+          margin: 0 auto;
+          width: 100px;
+          height: 100px;
+          line-height: 100px;
+          vertical-align: top;
+          border-radius: 50%;
+          background-color: @primary-color;
+
+          > i {
+            font-size: 50px;
+            color: #fff;
+          }
+        }
+
+        > .text {
+          margin-top: 10px;
+          font-weight: 200;
+
+          > h1 {
+            font-size: 24px;
+            font-weight: 300;
+          }
+
+          > p {
+            padding: 5px 20%;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .@{content2} {
+    overflow: hidden;
+    margin: auto;
+    padding-top: 5%;
+    width: 90%;
+
+    &-wrapper {
+      padding-top: 0;
+    }
+
+    &-contentWrapper {
+      top: auto;
+      margin: auto;
+      margin-top: 10%;
+      height: auto;
+
+      ul {
+
+        > li {
+          position: relative;
+          width: 50%;
+          margin: auto;
+          margin-bottom: 30px;
+
+          > .icon {
+            margin: 0 auto;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+
+            > i {
+              font-size: 50px;
+              color: #fff;
+            }
+          }
+
+          > .text {
+
+            > h1 {
+              font-size: 20px;
+            }
+
+            > p {
+              font-size: 12px;
+            }
+          }
+
+          &.queue-anim-leaving {
+            position: relative !important;
+          }
+        }
+      }
+    }
+  }
+}
