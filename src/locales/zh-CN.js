@@ -1,6 +1,6 @@
 
 export default {
-  'app.common.slogan': '个性化人工智能网络生态',
+  'app.common.slogan': 'AvatarX 区块浏览器',
 
 
   'app.header.menu.home': '首页',

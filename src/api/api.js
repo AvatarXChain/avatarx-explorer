@@ -1,7 +1,5 @@
 import axios from "./config";
 
-export const VERSION = 'v3';
-
 export const request = options => {
   const { method = 'get', url, params } = options;
 

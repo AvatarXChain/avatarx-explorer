@@ -50,7 +50,7 @@ class Footer extends React.Component {
           {
             type: 'text',
             title: <FormattedHTMLMessage id="app.footer.product-child-block-browser" />,
-            link: '#'
+            link: 'https://explorer.avatarx.io/'
           },
           {
             type: 'text',
