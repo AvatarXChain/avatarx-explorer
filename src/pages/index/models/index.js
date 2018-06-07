@@ -8,7 +8,7 @@ export default {
   effects: {
   },
   subscriptions: {
-    inviteSubscriber({ dispatch, history }) {
+    indexSubscriber({ dispatch, history }) {
       const fetchBlockList = (limit = 20, offset = 0) => {
         dispatch({
           type: 'blocks/fetchBlockList',

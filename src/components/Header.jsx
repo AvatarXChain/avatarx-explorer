@@ -40,8 +40,8 @@ class Header extends React.Component {
         name: <FormattedMessage id="app.header.menu.home" />,
         link: '/',
       }, {
-        name: <FormattedMessage id="app.header.menu.wallets" />,
-        link: '/wallets',
+        name: <FormattedMessage id="app.header.menu.accounts" />,
+        link: '/accounts',
       }, {
         name: <FormattedMessage id="app.header.menu.delegates" />,
         link: '/delegates',

@@ -1,7 +1,1 @@
-import Index from './components/Index';
-
-export default () => {
-  return (
-    <Index />
-  )
-}
+export default from './components/Index';

@@ -3,13 +3,9 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import Link from 'umi/link';
 import { FormattedMessage } from 'react-intl';
 import { Table, Tabs } from 'antd';
-import { limitedStr } from '../../../utils/filters';
-
-import * as AvatarxJS from 'avatarx-js';
+import { limitedStr, tokenFormat, fullTimeStamp } from '../../../utils/filters';
 
 const TabPane = Tabs.TabPane;
-
-// import BannerSVGAnim from './BannerSVGAnim';
 
 class Content extends React.Component {
 
@@ -25,75 +21,75 @@ class Content extends React.Component {
 
     const columnsBlocks = [
       {
-        title: '区块ID',
+        title: <FormattedMessage id="app.index.blocks.column-id" />,
         dataIndex: 'id',
         key: 'id',
-        render: text => <Link to={`/blocks/${text}`}>{limitedStr(text, 48)}</Link>,
+        render: text => <Link to={`/blocks/${text}`}>{limitedStr(text, 40)}</Link>,
       }, {
-        title: '区块高度',
+        title: <FormattedMessage id="app.index.blocks.column-height" />,
         dataIndex: 'height',
         key: 'height',
       }, {
-        title: '生成日期',
+        title: <FormattedMessage id="app.index.blocks.column-timestamp" />,
         dataIndex: 'timestamp',
         key: 'timestamp',
-        render: text => <span>{AvatarxJS.utils.format.fullTimeStamp(text)}</span>,
+        render: text => fullTimeStamp(text),
       }, {
-        title: '交易次数',
+        title: <FormattedMessage id="app.index.blocks.column-transactions" />,
         dataIndex: 'numberOfTransactions',
         key: 'numberOfTransactions',
-        align: 'right',
+        align: 'center',
       }, {
-        title: '生产者',
+        title: <FormattedMessage id="app.index.blocks.column-generator" />,
         dataIndex: 'generatorId',
         key: 'generatorId',
-        render: text => <Link to={`/blocks/${text}`}>{text}</Link>,
+        render: (text, record) => <Link to={`/accounts/${record.generatorId}`}>{text}</Link>,
       }, {
-        title: '总金额',
+        title: <FormattedMessage id="app.index.blocks.column-total-amount" />,
         dataIndex: 'totalAmount',
         key: 'totalAmount',
         align: 'right',
       }, {
-        title: '锻造收益',
+        title: <FormattedMessage id="app.index.blocks.column-reward" />,
         dataIndex: 'reward',
         key: 'reward',
         align: 'right',
-        render: text => <span>{text / 100000000}</span>,
+        render: text => `${tokenFormat(text)}`,
       }
     ];
 
     const columnTransactions = [
       {
-        title: 'ID',
+        title: <FormattedMessage id="app.index.transactions.column-id" />,
         dataIndex: 'id',
         key: 'id',
         render: text => <Link to={`/blocks/${text}`}>{limitedStr(text, 48)}</Link>,
       }, {
-        title: '交易日期',
-        dataIndex: 'timestamp',
-        key: 'timestamp',
-        render: text => <span>{AvatarxJS.utils.format.fullTimeStamp(text)}</span>,
-      }, {
-        title: '发送者',
+        title: <FormattedMessage id="app.index.transactions.column-timestamp" />,
         dataIndex: 'numberOfTransactions',
         key: 'numberOfTransactions',
         align: 'right',
       }, {
-        title: '接受者',
+        title: <FormattedMessage id="app.index.transactions.column-sender" />,
         dataIndex: 'generatorId',
         key: 'generatorId',
         render: text => <Link to={`/blocks/${text}`}>{text}</Link>,
       }, {
-        title: '金额',
+        title: <FormattedMessage id="app.index.transactions.column-recipient" />,
         dataIndex: 'totalAmount',
         key: 'totalAmount',
         align: 'right',
       }, {
-        title: '费用',
+        title: <FormattedMessage id="app.index.transactions.column-total-amount" />,
         dataIndex: 'reward',
         key: 'reward',
         align: 'right',
-        render: text => <span>{text / 100000000}</span>,
+        render: text => tokenFormat(text),
+      }, {
+        title: <FormattedMessage id="app.index.transactions.column-total-fee" />,
+        dataIndex: 'timestamp',
+        key: 'timestamp',
+        render: text => fullTimeStamp(text),
       }
     ];
 
@@ -108,14 +104,14 @@ class Content extends React.Component {
           <div className="inner">
             <Tabs
               defaultActiveKey="1">
-              <TabPane tab={<FormattedMessage id="app.home.content1.about" />} key="1">
+              <TabPane tab={<FormattedMessage id="app.index.latest-blocks" />} key="1">
                 <Table
                   columns={columnsBlocks}
                   dataSource={dataBlocks}
                   pagination={false}
                 />
               </TabPane>
-              <TabPane tab="最新交易" key="2">
+              <TabPane tab={<FormattedMessage id="app.index.latest-transactions" />} key="2">
                 <Table
                   columns={columnTransactions}
                   dataSource={dataTransactions}

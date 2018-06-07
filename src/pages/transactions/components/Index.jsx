@@ -60,7 +60,7 @@ class Home extends React.Component {
     ];
 
     return (
-      <DocumentTitle title={`AvatarX - ${formatMessage({ id: 'app.common.slogan' })}`}>
+      <DocumentTitle title={`${formatMessage({ id: 'app.common.slogan' })}`}>
         <div className="templates-wrapper">
           {this.state.show && children}
         </div>

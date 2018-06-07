@@ -1,4 +1,6 @@
 
+import * as AvatarxJS from 'avatarx-js';
+
 const _formatDateNumber = arg => {
   return arg < 10 ? `0${arg}` : arg
 }
@@ -40,18 +42,56 @@ export const dateFormat = date => {
   return `${rawDate.getFullYear()}-${month}-${day} ${hour}:${minute}:${second}`
 }
 
+export const fullTimeStamp = date => {
+  return AvatarxJS.utils.format.fullTimeStamp(date);
+}
+
 export const limitedStr = (str, len) => {
-  const reg = '/[^\x00-\xff]/g'
+  const reg = '/[^\x00-\xff]/g';
   if (str.replace(reg, 'mm').length <= len) {
-    return str
+    return str;
   }
 
-  const half = Math.floor(len / 2)
-  const strLen = str.length
+  const half = Math.floor(len / 2);
+  const strLen = str.length;
+
   for (let i = half; i < strLen; i++) {
     if (str.substr(0, i).replace(reg, 'mm').length >= len) {
-      return str.substr(0, i) + '...'
+      return str.substr(0, i) + '...';
     }
   }
-  return str
+  return str;
 }
+
+export const tokenFormat = fee => {
+
+  if (!fee) {
+    return 0;
+  }
+
+  fee = fee.toString();
+
+  while (fee.length < 9) {
+    fee = '0'.concat(fee);
+  }
+
+  fee = fee.slice(0, -8).concat('.', fee.slice(-8));
+
+  let clearView = false;
+
+  while (!clearView) {
+    if (fee[fee.length - 1] === '0') {
+      fee = fee.slice(0, fee.length - 1);
+    } else {
+      clearView = true;
+    }
+  }
+
+  if (fee[fee.length - 1] === '.') {
+    fee = fee.slice(0, fee.length - 1);
+  }
+  return fee;
+}
+
+
+
