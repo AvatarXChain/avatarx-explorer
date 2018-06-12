@@ -13,7 +13,9 @@ class Content extends React.Component {
     className: 'content1',
   };
 
-  getDelay = e => e % 3 * 100 + Math.floor(e / 3) * 100 + 300;
+  state = {
+    loadingBlocks: false,
+  };
 
   render() {
     const props = { ...this.props };
@@ -109,6 +111,7 @@ class Content extends React.Component {
                   columns={columnsBlocks}
                   dataSource={dataBlocks}
                   pagination={false}
+                  loading={this.state.loadingBlocks}
                 />
               </TabPane>
               <TabPane tab={<FormattedMessage id="app.index.latest-transactions" />} key="2">

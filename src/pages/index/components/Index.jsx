@@ -2,7 +2,7 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import { formatMessage } from 'umi/locale';
 
-import Content1 from './Content1';
+import Content from './Content';
 
 import './less/style.less';
 
@@ -12,9 +12,9 @@ class Home extends React.Component {
     const { blockList, transactionList } = this.props
 
     const children = [
-      <Content1
-        id="content_1"
-        key="content_1"
+      <Content
+        id="content"
+        key="content"
         dataBlocks={blockList && blockList.success ? blockList.blocks : []}
         dataTransactions={transactionList && transactionList.success ? transactionList.transactions : []}
       />
